@@ -1,0 +1,15 @@
+This is a project for the Fall 2012 Music Information Retrieval Class at NYU.
+Project authors: Amar Lal and Kevin Murphy
+Goal: Create a chroma-based Musical Mosaicing system.
+
+
+Files:
+
+AL_ACF.m Autocorrelation Function for beat tracking
+AL_Beats.m Phase shift for detected beats (not working)
+AL_CD.m Complex domain detection function
+AL_EDist.m Simple euclidian distance between two vectors
+princarg.m phase wrap between -pi and pi
+projAnalysis.m analysis and data storage loop for each file
+projMain.m main code
+segmentbackwards.m a test for segmenting a file and re-concatenating it with reverse order of events
