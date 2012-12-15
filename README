@@ -12,6 +12,7 @@ AL_EDist.m 		Simple euclidian distance between two vectors
 princarg.m 		phase wrap between -pi and pi
 projAnalysis.m 		analysis and data storage loop for each file
 projMain.m 		main code
-segmentbackwards.m 	a test for segmenting a file and re-concatenating it with reverse order of events
+segmentbackwards.m 	a test for segmenting a file and re-concatenating it with 
+			reverse order of events
 pvoc.m 			phase vocoder
 chromaValues.m		chroma function

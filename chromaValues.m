@@ -5,6 +5,14 @@ chromaOctaves = 4;
 perNote = 1;
 
 windowSize = 8192;
+%reset window size if signal length is too small
+if length(audio) < 8192
+    windowSize = 4096;
+    if length(audio) < 4096
+        windowSize = 2048;
+    end
+end
+
 preferredSampleRate = 40;
 hop = windowSize - (fs/preferredSampleRate);
 

@@ -15,9 +15,11 @@ function [cd,fsN,onsets] = AL_CD(x,fs,thresh,order)
 if nargin < 4
     %set thresh
     if nargin < 3
-        thresh = 0.5;
+        %set threshold to 0l
+        thresh =  0; 
     end
-    order = 10;
+    %2ms window for events
+    order = round(fs*0.002);
 end
 
 
