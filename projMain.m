@@ -1,13 +1,20 @@
 %pass this an array containing an audio file at each point, and fs
-function [newDat] = projMain(library,target,fs,filename);
+function [newDat] = projMain(libraryDir,targetF,outfilename);
 
-%run analysis on dataset
-for m =1:length(library)
-    alldata(m) = projAnalysis(library(m),fs);
+fs = 44100;
+
+
+%% get filenames
+fnames = dir(libraryDir);
+
+
+%% run analysis on dataset
+for m =4:length(fnames)
+    alldata(m) = projAnalysis(libraryDir,fnames(m).name);
 end
 
-%analyze target
-targetDat = projAnalysis(target,fs);
+%% analyze target
+targetDat = projAnalysis(targetF);
 
 %buffer for output
 output = zeros(length(target),1);
@@ -17,11 +24,11 @@ lengths = targetDat.endTime - targetDat.startTime;
 
 
 
-%for each sample in the target, find the closest from database
+%% for each sample in the target, find the closest from database
 for i = 1:length(targetDat.startTime)
     
     %starting distance high so first will be lower
-    bestmin = 5;
+    bestmin = 999999999;
     loc = [0,0];
     
     %size of sample
@@ -47,7 +54,7 @@ for i = 1:length(targetDat.startTime)
         end
         
         %weighted differences
-        temp.weightedD = ;
+        temp.weightedD = rmsD + maxChrD + ampD + chromD;
         
         %if there's a distance closer than the closest found distance,
         %store the index and value for future reference
@@ -71,7 +78,7 @@ for i = 1:length(targetDat.startTime)
 end
 
 
-%run analysis on output
+%% run analysis on output
 newDat = projAnalysis(output,fs);
 %compare to target's analysis
 
@@ -89,8 +96,8 @@ for n = 1:length(targetDat.startTime)
 end
         
 %weighted differences
-newDat.weightedD =  ;
+newDat.weightedD =  rmsD + maxChrD + ampD + chromD;
 
-%wavwrite output
-wavwrite(ouput,fs,16,filename);
+%% wavwrite output
+wavwrite(ouput,fs,16,outfilename);
     
