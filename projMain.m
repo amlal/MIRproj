@@ -14,7 +14,7 @@ for m =4:length(fnames)
 end
 
 %% analyze target
-targetDat = projAnalysis(targetF);
+targetDat = projAnalysis('',targetF);
 
 %buffer for output
 output = zeros(length(target),1);
@@ -22,11 +22,13 @@ output = zeros(length(target),1);
 %get sample lengths
 lengths = targetDat.endTime - targetDat.startTime;
 
+len = length(targetDat.startTime);
 
 
 %% for each sample in the target, find the closest from database
-for i = 1:length(targetDat.startTime)
-    
+for i = 1:len
+    str = ['computing distances for sample ',i,' of ',len);
+    disp(str);
     %starting distance high so first will be lower
     bestmin = 999999999;
     loc = [0,0];
@@ -74,6 +76,8 @@ for i = 1:length(targetDat.startTime)
     
     %concat samp to output
     output( (targetDat.startTime(i)) : (targetDat.endTime(i)) ) = touse;
+    str = ['found sample ',i,'!');
+    disp(str);
     
 end
 
