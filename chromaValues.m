@@ -15,6 +15,9 @@ end
 
 preferredSampleRate = 40;
 hop = windowSize - (fs/preferredSampleRate);
+if hop < 1
+    error('this is it')
+end
 
 [S,F,T] = spectrogram(audio, hamming(windowSize), floor(hop), 16384*2, fs, 'yaxis');
 

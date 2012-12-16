@@ -15,7 +15,7 @@ fmin = fs*60;
     if strcmp(ext,'.wav') == 1
         name = sprintf('%s%s',libraryDir,fname);
         
-        [x,fs1] = wavread(name);
+        [x,fs1] = wavread(name, [1 fmin]);
         %if fs doesn't match, don't store
         if fs ~= fs1
             error('wrong sample rate');
@@ -23,9 +23,9 @@ fmin = fs*60;
         
         %mono only accept 1 mins of file
         x = x(:,1);
-        if length(x) >= fmin
-            x = x(1:fmin,1);
-        end
+%         if length(x) >= fmin
+%             x = x(1:fmin,1);
+%         end
         
     end
     %%
