@@ -9,7 +9,7 @@ end
 sum=0;
 
 for i=1:length(a)
-    sum = sum + ((b(i)-a(i))^2)
+    sum = sum + ((b(i)-a(i))^2);
 end
 
 euclid = sqrt(sum);
