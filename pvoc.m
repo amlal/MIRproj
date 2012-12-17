@@ -9,6 +9,10 @@ function y = pvoc(x, r, n)
 if nargin < 3
   n = 2048;
 end
+%zero pad short signals
+if (length(x)<n)
+    x = vertcat(x, zeros(n-length(x),1));
+end
 
 % With hann windowing on both input and output, 
 % we need 25% window overlap for smooth reconstruction
