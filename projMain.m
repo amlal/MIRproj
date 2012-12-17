@@ -64,7 +64,7 @@ for i = 1:len
             %rms distances
             rmsD = abs(temp.rms - targetDat.rms(i));
             %max chroma distance
-            maxChrD = abs(temp.maxChroma - targetDat.maxChroma(i));
+            maxChrD = abs(temp.maxChroma - targetDat.maxChroma(i))/12;
             %max amplitude difference
             ampD = abs(temp.maxAmp - targetDat.maxAmp(i));
             %chroma distance
@@ -74,7 +74,7 @@ for i = 1:len
                 chromD(k) = AL_EDist(temp.chroma(k,:),targetDat.chroma(i,:));
             end
             
-            centD = abs(temp.specCent - targetDat.specCent(i));
+            centD = abs(temp.specCent - targetDat.specCent(i))/(fs/2);
             
             %weighted differences
             temp.weightedD = (distVec(1) * rmsD) + (distVec(2) * maxChrD) + ...
