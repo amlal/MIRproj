@@ -25,10 +25,10 @@ zv = zeros(size(startend,2),1);
 %also includes allocation for temporary weighted distances from current
 %target
 data = struct('audioFile',x,'startTime',zv, 'endTime',zv,'rms',zv,'maxChroma',zv, ...
-   'chroma',zeros(size(startend,2),12),'maxAmp',zv,'weightedD',zv);
+   'chroma',zeros(size(startend,2),12),'maxAmp',zv, 'specCent', zv,'weightedD',zv);
 
 
-disp('chroma and amplitude...');
+disp('chroma, spectral centroid and amplitude...');
 %% Analysis loop
 for i = 1:size(startend,2)
     
@@ -53,13 +53,17 @@ for i = 1:size(startend,2)
     %store in data structure
     data.rms(i) = rmsval;
     
+    %Spectral Centroid!
+    centroid = spectralCentroid(block, fs);
+    %store in a data struct
+    data.specCent(i) = centroid;
+    
+    
     %get max amplitude
     dmax = max(block);
     %store in data structure
     data.maxAmp(i) = dmax;
     
-
-        
 end
 
 

@@ -1,8 +1,16 @@
 %pass this an array containing an audio file at each point, and fs
-function projMain(libraryDir,targetF,outfilename);
+function projMain(libraryDir,targetF,outfilename,distVec);
 
 fs = 44100;
 
+
+if nargin < 4
+    distVec = [1,1,1,1,1];
+end    
+if length(distVec) ~= 5
+    warning('distance vector is improprely formatted');
+    distVec = [1,1,1,1,1];
+end
 
 %% get filenames
 fnames = dir(libraryDir);
@@ -60,8 +68,11 @@ for i = 1:len
                 chromD(k) = AL_EDist(temp.chroma(k,:),targetDat.chroma(i,:));
             end
             
+            centD = abs(temp.specCent - targetDat.specCent(i));
+            
             %weighted differences
-            temp.weightedD = rmsD + maxChrD + ampD + chromD;
+            temp.weightedD = (distVec(1) * rmsD) + (distVec(2) * maxChrD) + ...
+                (distVec(3) * ampD) + (distVec(4) * chromD) + (distVec(5) * centD);
              
             %if there's a distance closer than the closest found distance,
             %store the index and value for future reference

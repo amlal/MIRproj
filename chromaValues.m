@@ -19,6 +19,13 @@ if hop < 1
     error('this is it')
 end
 
+%quick hack to fix segment lengths, zero pad if too short
+if(length(audio)<windowSize)
+    conc = zeros(windowSize - length(audio),1);
+    audio = vertcat(audio, conc);
+end
+
+
 [S,F,T] = spectrogram(audio, hamming(windowSize), floor(hop), 16384*2, fs, 'yaxis');
 
 %creates a lin-log frequency map to multiply against the STFT
