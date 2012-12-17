@@ -1,3 +1,9 @@
+%This function loads in the file in libraryDir/fname and extracts its
+%onsets and event segment start and end times.
+%For each segment, chroma, rms amplitude, max chroma, max amplitude, and
+%spectral centroid are extracted. All data is stored in return struct
+%'data'
+
 function [data] = projAnalysis(libraryDir,fname)
 
 

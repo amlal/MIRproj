@@ -1,3 +1,6 @@
+%This function returns a single mean spectral centroid value for the input
+%wave file
+
 function [centroid] = spectralCentroid(audio, fs)
 audio=audio(:,1);
 

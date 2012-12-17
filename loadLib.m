@@ -1,4 +1,8 @@
-%this function mp3reads or wavreads all 
+%This function reads in files with a .wav extension. 
+%Only the first minute of a file is read in, and only one channel is kept.
+
+%option to extend to mp3 files available below, mp3read had proved finnicky
+%so this has been commented out.
 function x = loadLib(libraryDir,fname)
 
 
@@ -21,13 +25,22 @@ fmin = fs*60;
             error('wrong sample rate');
         end
         
-        %mono only accept 1 mins of file
+        %mono 
         x = x(:,1);
-%         if length(x) >= fmin
-%             x = x(1:fmin,1);
-%         end
         
     end
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     %%
     %if mp3
 %     if strcmp(ext,'.mp3') == 1

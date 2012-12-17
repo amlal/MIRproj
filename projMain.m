@@ -1,4 +1,10 @@
-%pass this an array containing an audio file at each point, and fs
+%This function re-creates the file in targetF from samples in libraryDir
+%and outputs the result in outfilename. distVec is an optional parameter to
+%weight the parameters used in the decision-making algorithm. 
+%
+% distVec order is: rms, maxc chroma, max amplitude, chroma, spectral centroid
+
+
 function projMain(libraryDir,targetF,outfilename,distVec);
 
 fs = 44100;

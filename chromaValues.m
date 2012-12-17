@@ -1,3 +1,5 @@
+%returns a chroma matrix over time for the audio in 'audio'
+
 function [chroma, T] = chromaValues(audio, fs)
 audio=audio(:,1);
 
