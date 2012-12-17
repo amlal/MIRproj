@@ -61,6 +61,8 @@ for i = 1:size(startend,2)
     
     %Spectral Centroid!
     centroid = spectralCentroid(block, fs);
+    %get rid of pesky NaNs
+    centroid(isnan(centroid)) = 0;
     %store in a data struct
     data.specCent(i) = centroid;
     
