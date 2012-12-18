@@ -2,11 +2,18 @@ This is a project for the Fall 2012 Music Information Retrieval Class at NYU.
 Project authors: Amar Lal and Kevin Murphy
 Goal: Create a chroma-based Musical Mosaicing system.
 
+To run:
+
+projMain(libraryDir,targetFile,outFile,distVec);
+where
+libraryDir is the directory for library files (MUST be terminated w/ a slash)
+targetFile is the filepath of the target file
+outFile is the name of the output file
+distVec is an optional vector of weightings for the parameters. In order, 
+RMS amplitude, max chroma, max amplitude, chroma, spectral centroid
 
 Files:
 
-AL_ACF.m 		Autocorrelation Function for beat tracking
-AL_Beats.m 		Phase shift for detected beats (not working)
 AL_CD.m 		Complex domain detection function
 AL_EDist.m 		Simple euclidian distance between two vectors
 princarg.m 		phase wrap between -pi and pi
@@ -16,3 +23,4 @@ segmentbackwards.m 	a test for segmenting a file and re-concatenating it with
 			reverse order of events
 pvoc.m 			phase vocoder
 chromaValues.m		chroma function
+spectralCentroid.m	spectral centroid function
