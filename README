@@ -1,6 +1,6 @@
 This is a project for the Fall 2012 Music Information Retrieval Class at NYU.
 Project authors: Amar Lal and Kevin Murphy
-Goal: Create a chroma-based Musical Mosaicing system.
+Goal: Create a Musical Mosaicing system that makes use of spectral centroid, chroma and amplitude information.
 
 To run:
 
@@ -23,3 +23,5 @@ projMain.m 		main code
 pvoc.m 			phase vocoder
 chromaValues.m		chroma function
 spectralCentroid.m	spectral centroid function
+
+Lal_Murphy_Final.pdf	Documentation and evaluation of code circa 12/16/12
